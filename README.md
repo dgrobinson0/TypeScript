@@ -140,14 +140,47 @@ function sumar(a: number, b: number) {
 function imprimir(mensaje: string) {
   console.log(`Hola ${mensaje}`);
 }
-
 imprimir("mundo")
 ```
 ```
-// funciones utilizando const
+// arrow function
 const imprimir = (mensaje: string) => {
   console.log(`Hola ${mensaje}`);
 }
-
 imprimir("mundo")
+
+// tipado arrow function - Evitar usar, dejar que TypeScript infiera
+const imprimir = (mensaje: string): void => {
+  console.log(`Hola ${mensaje}`);
+}
+imprimir ("mundo")
+```
+```
+// funciones utilizando const que recibe por parámetros otras funciones
+// Al pasar funciones como parámetro seguir la estructura obtenerHello: () => string
+const imprimir = (obtenerHello: () => string, obtenerWorld: () => string, mensaje: string ) => {
+  const mensaje1 = obtenerHello()
+  const mensaje2 = obtenerWorld()
+  console.log(`Hola ${mensaje}, ${mensaje1} ${mensaje2}`);  
+}
+
+const obtenerHello = () => {
+    return "Hello"
+}
+
+const obtenerWorld = () => {
+    return "World"
+}
+
+imprimir(obtenerHello, obtenerWorld, "mundo")
+```
+
+# Objetos en TypeScript
+Un objeto es una colección de pares clave-valor (también llamados propiedades). En TypeScript, además, cada propiedad del objeto tiene un tipo definido.
+```
+const Persona = {       |      interface Persona = {       |     type Persona = {
+  nombre: "Ana",        |        nombre: "Ana",            |       nombre: "Ana",
+  edad: 30,             |        edad: 30,                 |       edad: 30, 
+  activo: true          |        activo: true              |       activo: true
+}                       |      }                           |     }
 ```

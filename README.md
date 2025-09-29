@@ -184,3 +184,52 @@ const Persona = {       |      interface Persona = {       |     type Persona = 
   activo: true          |        activo: true              |       activo: true
 }                       |      }                           |     }
 ```
+> [!NOTE]
+> Tanto type como interface en TypeScript se usan para definir la forma de los objetos, pero tienen diferencias clave en comportamiento, flexibilidad y uso recomendado.
+>
+> 1. **Extensibilidad**: 
+>
+> ✅ **interface:** Se puede extender con extends o reabrir (declaración merging)
+> ```
+> interface Animal {
+>   nombre: string;
+> }
+> interface Perro extends Animal {
+>   raza: string;
+> }
+> // También puedes "reabrir" una interfaz (útil en librerías):
+> interface Animal {
+>   edad: number; // Ahora Animal tiene nombre + edad
+> }
+> ```
+> ❌ type: No se puede reabrir. Solo se puede extender usando intersecciones (&):
+>```
+> type Animal = {
+>   nombre: string;
+> };
+> type Perro = Animal & {
+>   raza: string;
+> };
+> // ❌ Esto NO es posible:
+> // type Animal = { edad: number; } // Error: duplicado
+>```
+>📌 Ventaja de interface: Ideal para librerías o cuando necesitas "agregar" propiedades más tarde.
+>
+>  2. **Flexibilidad de tipos:**
+> 
+> ✅ **type:** Puede representar cualquier tipo, no solo objetos:
+>```
+> type ID = string | number;           // Unión
+> type Punto = [number, number];       // Tupla
+> type Callback = (x: number) => void; // Función
+> type Nombre = string;                // Alias simple
+>```
+>❌ **interface:** Solo puede describir objetos (o tipos de función, pero es raro y limitado):
+> ```
+> // ❌ Esto NO se puede hacer con interface:
+> // interface ID = string | number; // Error de sintaxis
+> ```
+> 📌 Ventaja de **type**: Es mucho más versátil para tipos complejos. 
+     
+     
+

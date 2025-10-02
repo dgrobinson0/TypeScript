@@ -229,7 +229,26 @@ const Persona = {       |      interface Persona = {       |     type Persona = 
 > // ❌ Esto NO se puede hacer con interface:
 > // interface ID = string | number; // Error de sintaxis
 > ```
-> 📌 Ventaja de **type**: Es mucho más versátil para tipos complejos. 
-     
-     
+> 📌 Ventaja de **type**: Es mucho más versátil para tipos complejos.
 
+**Ejemplos de uso de objetos y funciones**
+```
+// Definimos un objeto con un alias de tipo y lo denominamos Persona
+type Persona = {
+    name: string
+    sexo: string
+    address?: string  // el signo ? significa que se puede pasar o no, es opcional. A esto se le conoce como Optionals Properties
+}
+
+function ListarPersonas({name, sexo}: Persona){
+    console.log(`${name} - ${sexo}`) 
+}
+
+ListarPersonas({name: "Pepe", sexo: "M"})
+```
+
+# Array
+```
+const language: string[] = []                // array de tipo string
+const language: (string | number)[] = []     // array de tipo string y numbers
+```

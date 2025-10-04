@@ -252,3 +252,16 @@ ListarPersonas({name: "Pepe", sexo: "M"})
 const language: string[] = []                // array de tipo string
 const language: (string | number)[] = []     // array de tipo string y numbers
 ```
+
+# Condicionales
+```
+// Condicional ternario
+condición ? valor_si_true : valor_si_false
+```
+```
+let isMasculine = false
+const colors = isMasculine ? "verde" //si es true colors es verde
+                           : "rojo"  //si es false colors es rojo
+
+console.log (colors)
+```
